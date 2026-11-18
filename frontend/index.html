@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Hostel Water Leakage Monitoring</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <h1>💧 SMART HOSTEL WATER LEAKAGE MONITORING</h1>
+    <p class="subtitle">Cloud-Based Water Leakage Alert &amp; Simulation System</p>
+  </div>
+  <div class="status-header" id="statusHeader">
+    <div class="status-pill" id="systemStatus">System Status: <span>CHECKING...</span></div>
+    <div class="status-pill" id="cloudStatus">Cloud Status: <span>CHECKING...</span></div>
+    <div class="status-pill">Last Updated: <span id="lastUpdated">--</span></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Summary Cards -->
+  <section class="cards-grid">
+    <div class="card">
+      <h3>Total Alerts</h3>
+      <p id="cardTotal">0</p>
+    </div>
+    <div class="card card-red">
+      <h3>Active Leaks</h3>
+      <p id="cardActive">0</p>
+    </div>
+    <div class="card card-green">
+      <h3>Resolved Leaks</h3>
+      <p id="cardResolved">0</p>
+    </div>
+    <div class="card card-orange">
+      <h3>Emergency Alerts</h3>
+      <p id="cardEmergency">0</p>
+    </div>
+    <div class="card card-blue">
+      <h3>Notifications</h3>
+      <p id="cardNotifications">0</p>
+    </div>
+  </section>
+
+  <!-- Indicator + Controls -->
+  <section class="control-panel">
+
+    <div class="indicator-box">
+      <div class="indicator" id="leakIndicator">
+        <div class="indicator-dot" id="indicatorDot"></div>
+        <div class="indicator-label" id="indicatorLabel">SAFE</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="form-row">
+        <label for="hostelBlock">Hostel Location</label>
+        <select id="hostelBlock">
+          <option value="Hostel Block A">Hostel Block A</option>
+          <option value="Hostel Block B">Hostel Block B</option>
+          <option value="Hostel Block C">Hostel Block C</option>
+          <option value="Hostel Block D">Hostel Block D</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="roomNumber">Room Number</label>
+        <input type="text" id="roomNumber" placeholder="e.g. 101" value="101">
+      </div>
+
+      <div class="button-row">
+        <button class="btn btn-primary" id="btnSimulate">💧 SIMULATE WATER LEAK</button>
+        <button class="btn btn-danger" id="btnEmergency">🚨 EMERGENCY TRIGGER</button>
+        <button class="btn btn-success" id="btnResolve">✓ RESOLVE LEAK</button>
+      </div>
+
+      <div id="actionMessage" class="action-message"></div>
+    </div>
+  </section>
+
+  <!-- Live Metrics -->
+  <section class="metrics-panel">
+    <h2>📊 Live Metrics</h2>
+    <div class="metrics-grid">
+      <div class="metric"><span>Total Requests</span><strong id="metricTotalReq">0</strong></div>
+      <div class="metric"><span>Successful Requests</span><strong id="metricSuccessReq">0</strong></div>
+      <div class="metric"><span>Active Alerts</span><strong id="metricActive">0</strong></div>
+      <div class="metric"><span>Resolved Alerts</span><strong id="metricResolved">0</strong></div>
+      <div class="metric"><span>Emergency Alerts</span><strong id="metricEmergency">0</strong></div>
+      <div class="metric"><span>Avg Response Time</span><strong id="metricAvgResp">0 ms</strong></div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="filters-panel">
+    <h2>🔎 Filters</h2>
+    <div class="filters-row">
+      <select id="filterLocation">
+        <option value="">All Locations</option>
+        <option value="Hostel Block A">Hostel Block A</option>
+        <option value="Hostel Block B">Hostel Block B</option>
+        <option value="Hostel Block C">Hostel Block C</option>
+        <option value="Hostel Block D">Hostel Block D</option>
+      </select>
+      <select id="filterStatus">
+        <option value="">All Status</option>
+        <option value="ACTIVE">ACTIVE</option>
+        <option value="RESOLVED">RESOLVED</option>
+      </select>
+      <select id="filterSeverity">
+        <option value="">All Severity</option>
+        <option value="LOW">LOW</option>
+        <option value="MEDIUM">MEDIUM</option>
+        <option value="HIGH">HIGH</option>
+      </select>
+      <select id="filterEventType">
+        <option value="">All Types</option>
+        <option value="WATER_LEAK">WATER_LEAK</option>
+        <option value="MANUAL_EMERGENCY">MANUAL_EMERGENCY</option>
+      </select>
+      <button class="btn btn-secondary" id="btnApplyFilters">Apply Filters</button>
+      <button class="btn btn-outline" id="btnRefresh">⟳ Refresh</button>
+    </div>
+  </section>
+
+  <!-- Alert History Table -->
+  <section class="history-panel">
+    <h2>📋 Alert History</h2>
+    <div class="table-wrap">
+      <table id="alertTable">
+        <thead>
+          <tr>
+            <th>Alert ID</th>
+            <th>Location</th>
+            <th>Room</th>
+            <th>Event Type</th>
+            <th>Severity</th>
+            <th>Timestamp</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="alertTableBody">
+          <tr><td colspan="7" class="empty-row">Loading alerts...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Smart Hostel Water Leakage Alert &amp; Monitoring Simulator — Software-Only AWS Cloud Project</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
